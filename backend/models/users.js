@@ -7,27 +7,27 @@ const usersShema = new mongoose.Schema({
     },
     email: {
         type: String,
-        required: true
+        // required: true
     },
     phone: {
         type: String,
-        required: true
+        // required: true
     },
     job: {
         type: String,
-        required: true
+        // required: true
     },
     company: {
         type: String,
-        required: true
+        // required: true
     },
     age: {
         type: String,
-        required: true
+        // required: true
     },
     city: {
         type: String,
-        required: true
+        // required: true
     },
     comingFrom: {
         type: String,

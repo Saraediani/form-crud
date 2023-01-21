@@ -5,19 +5,18 @@ import  '../index.css';
 import  axios  from 'axios' ;
 function AddUser() {
   const baseURL = "http://localhost:3000/user";
-    const [AddUser, setaddUser] = useState({
-        name: "",
-        email: "",
-        phone:"" ,
-        job:"",
-        company:"",
-        age:"",
-        city:"",
-        comingFrom:"",
-      });
+  const initialFormState = { name: "",
+      email: "",
+      phone:"" ,
+      job:"",
+      company:"",
+      age:"",
+      city:"",
+      comingFrom:"",}
+
+      const [AddUser, setaddUser] = useState(initialFormState);
       const { name, email, phone, job, company, age, city } = AddUser;
-      const [error, setError] = useState("") 
-    
+
       const search = useLocation().search;
       const q = new URLSearchParams(search).get('q');
 
@@ -27,23 +26,23 @@ function AddUser() {
       const handleSubmit = async (e) => {
         e.preventDefault();
         setaddUser({ ...AddUser, comingFrom:q });
+      
+
         try {
-          const response = await axios({ 
+         const response = await axios({ 
             method: "post",
             url: baseURL,
             data: {...AddUser},
+          })
+          if (response){
+
+            setaddUser(initialFormState)
+            alert("Form submitted successfully")
           }
-          );
-          console.log(response);
+
          
           } catch (error) {
-          if (error.response &&
-            error.response.status >= 400 &&
-            error.response.status <= 500 
-          ){
-            setError(error.response.data.message)
-
-          }
+          console.log(error)
         }
       }
   return (

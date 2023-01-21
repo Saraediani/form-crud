@@ -12,11 +12,16 @@ import Users from '../../models/users.js';
   };
 
   const createUser = async (req, res) => {
-    const checkComingFrom = req.query.q ? req.query.q:""
     const createUser = await Users.create({
   
       name:req.body.name,
-      comingFrom:checkComingFrom
+      email:req.body.email,
+      phone:req.body.phone,
+      job:req.body.job,
+      city:req.body.city,
+      company:req.body.company,
+      age:req.body.age,
+      comingFrom:req.body.comingFrom
   
     })
   try{
